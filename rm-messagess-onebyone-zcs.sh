@@ -61,6 +61,14 @@ echo -e $Red"###################################################################
 # Best you don't change anything from here on, 
 # ONLY EDIT IF YOU KNOW WHAT YOU ARE DOING
 
+ROOT_UID=0     # Only users with $UID 0 have root privileges.
+E_NOTROOT=87   # Non-root exit error.
+
+if [ "$UID" -ne "$ROOT_UID" ]
+then
+   echo "Must be root to run this script."
+exit $E_NOTROOT
+fi
 
 ZIMBRA_BIN=/opt/zimbra/bin
 echo "Enter the username.:"
@@ -69,7 +77,7 @@ read THEACCOUNT
 echo "Enter the time that you would like to delete messages up to, in mm/dd/yy format. Example 04/10/09:"
 read THEDATE
 
-echo "What folder would you like to delete these messages from?:"
+echo "What folder would you like to delete these messages from?: Example Inbox"
 read THEFOLDER
 
 echo "You will now be deleting Messages from the $THEFOLDER folder up to $THEDATE for $THEACCOUNT."
