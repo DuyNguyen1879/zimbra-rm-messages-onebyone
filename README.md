@@ -1,1 +1,1 @@
-# rm-messages-onebyone-zcs.sh
+# rm-messages-onebyone.sh
